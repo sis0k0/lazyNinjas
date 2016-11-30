@@ -4,7 +4,7 @@ import { Component } from "@angular/core";
     template: `
         <StackLayout>
             <Label text="Home" class="h1 text-center"></Label>
-            <Button text="Go to the Ninjas" class="btn btn-primary btn-active"
+            <Button text="Load the lazy ninjas module" class="btn btn-primary btn-active"
                 [nsRouterLink]="['/ninjas']"></Button>
         </StackLayout>
     `
