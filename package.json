@@ -1,0 +1,37 @@
+{
+  "description": "NativeScript Application",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "readme": "NativeScript Application",
+  "repository": "<fill-your-repository-here>",
+  "nativescript": {
+    "id": "org.nativescript.lazyNinjas",
+    "tns-android": {
+      "version": "2.4.1"
+    }
+  },
+  "dependencies": {
+    "@angular/common": "2.1.2",
+    "@angular/compiler": "2.1.2",
+    "@angular/core": "2.1.2",
+    "@angular/forms": "2.1.2",
+    "@angular/http": "2.1.2",
+    "@angular/platform-browser": "2.1.2",
+    "@angular/platform-browser-dynamic": "2.1.2",
+    "@angular/router": "3.1.2",
+    "nativescript-angular": "next",
+    "nativescript-theme-core": "~1.0.0",
+    "reflect-metadata": "~0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "tns-core-modules": "2.4.0"
+  },
+  "devDependencies": {
+    "babel-traverse": "6.19.0",
+    "babel-types": "6.19.0",
+    "babylon": "6.14.1",
+    "lazy": "1.0.11",
+    "nativescript-dev-android-snapshot": "^0.*.*",
+    "nativescript-dev-typescript": "^0.3.2",
+    "typescript": "^2.0.10",
+    "zone.js": "~0.6.21"
+  }
+}
