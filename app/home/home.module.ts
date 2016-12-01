@@ -1,10 +1,10 @@
-import { NgModule } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular";
-import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NativeScriptModule, NativeScriptRouterModule } from "nativescript-angular";
 
 import { HomeComponent } from "./home.component";
 
 @NgModule({
+    schemas: [NO_ERRORS_SCHEMA],
     imports: [
         NativeScriptModule,
         NativeScriptRouterModule

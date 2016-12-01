@@ -1,13 +1,10 @@
 import { NgModule, NgModuleFactoryLoader } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/platform";
-import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { NativeScriptModule, NativeScriptRouterModule, NSModuleFactoryLoader } from "nativescript-angular";
 
 import { routing } from "./app-routing";
 import { HomeModule } from "./home/home.module";
 
 import { AppComponent } from "./app.component";
-
-import { NinjaModuleLoader } from "./ninja-module-loader";
 
 @NgModule({
     declarations: [AppComponent],
@@ -19,7 +16,7 @@ import { NinjaModuleLoader } from "./ninja-module-loader";
         routing
     ],
     providers: [
-        { provide: NgModuleFactoryLoader, useClass: NinjaModuleLoader }
+        { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader }
     ]
 })
 export class AppModule { }
