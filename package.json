@@ -18,7 +18,7 @@
     "@angular/platform-browser": "2.1.2",
     "@angular/platform-browser-dynamic": "2.1.2",
     "@angular/router": "3.1.2",
-    "nativescript-angular": "next",
+    "nativescript-angular": "1.2.0",
     "nativescript-theme-core": "~1.0.0",
     "reflect-metadata": "~0.1.8",
     "rxjs": "5.0.0-beta.12",
