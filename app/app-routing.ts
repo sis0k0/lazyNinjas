@@ -2,7 +2,7 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { routes as homeRoutes } from "./home/home.routes";
 
-const routes = [
+export const routes = [
     ...homeRoutes,
     {
         path: "ninjas",
