@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/platform";
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { routing } from "./app-routing";
@@ -14,7 +14,7 @@ import { AppComponent } from "./app.component";
         NativeScriptModule,
         NativeScriptRouterModule,
         routing,
-        HomeModule
+        HomeModule,
     ]
 })
 export class AppModule { }
