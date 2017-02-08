@@ -1,5 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule, NativeScriptRouterModule } from "nativescript-angular";
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { HomeComponent } from "./home.component";
 
@@ -7,7 +8,7 @@ import { HomeComponent } from "./home.component";
     schemas: [NO_ERRORS_SCHEMA],
     imports: [
         NativeScriptModule,
-        NativeScriptRouterModule
+        NativeScriptRouterModule,
     ],
     declarations: [HomeComponent]
 })

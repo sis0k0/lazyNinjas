@@ -1,5 +1,6 @@
 import { NgModule, NgModuleFactoryLoader } from "@angular/core";
-import { NativeScriptModule, NativeScriptRouterModule, NSModuleFactoryLoader } from "nativescript-angular";
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NativeScriptRouterModule, NSModuleFactoryLoader } from "nativescript-angular/router";
 
 import { routing } from "./app-routing";
 import { HomeModule } from "./home/home.module";
@@ -13,7 +14,7 @@ import { AppComponent } from "./app.component";
         HomeModule,
         NativeScriptModule,
         NativeScriptRouterModule,
-        routing
+        routing,
     ],
     providers: [
         { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader }
