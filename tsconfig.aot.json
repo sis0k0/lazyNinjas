@@ -27,6 +27,10 @@
             "globals": ["node_modules/tns-core-modules/globals"]
         }
     },
+    "exclude": [
+        "node_modules",
+        "platforms"
+    ],
     "angularCompilerOptions": {
         "skipMetadataEmit": true,
         "genDir": "./"
