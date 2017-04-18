@@ -1,6 +1,6 @@
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NgModule, NgModuleFactoryLoader, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { NativeScriptRouterModule, NSModuleFactoryLoader } from "nativescript-angular/router";
 
 import { NinjasComponent } from "./ninjas.component";
 import { routes } from "./ninjas.routes";
@@ -12,6 +12,9 @@ import { routes } from "./ninjas.routes";
         NativeScriptRouterModule,
         NativeScriptRouterModule.forChild(routes)
     ],
-    declarations: [NinjasComponent]
+    declarations: [NinjasComponent],
+    providers: [
+        { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader }
+    ]
 })
 export class NinjasModule { }
