@@ -5,6 +5,7 @@ const nsWebpack = require("nativescript-dev-webpack");
 const nativescriptTarget = require("nativescript-dev-webpack/nativescript-target");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 const { AotPlugin } = require("@ngtools/webpack");
 
@@ -31,7 +32,7 @@ module.exports = env => {
     const plugins = getPlugins(platform, env);
     const extensions = getExtensions(platform);
 
-    return {
+    const config = {
         context: resolve("./app"),
         target: nativescriptTarget,
         entry,
@@ -48,7 +49,11 @@ module.exports = env => {
             modules: [
                 "node_modules/tns-core-modules",
                 "node_modules",
-            ]
+            ],
+
+            alias: {
+                '~': resolve("./app")
+            },
         },
         node: {
             // Disable node shims that conflict with NativeScript
@@ -60,6 +65,19 @@ module.exports = env => {
         module: { rules },
         plugins,
     };
+
+    if (env.snapshot) {
+        plugins.push(new nsWebpack.NativeScriptSnapshotPlugin({
+            chunk: "vendor",
+            projectRoot: __dirname,
+            webpackConfig: config,
+            targetArchs: ["arm", "arm64", "ia32"],
+            tnsJavaClassesOptions: { packages: ["tns-core-modules" ] },
+            useLibs: false
+        }));
+    }
+
+    return config;
 };
 
 
@@ -85,7 +103,10 @@ function getRules() {
                     loader: "resolve-url-loader",
                     options: { silent: true },
                 },
-                "nativescript-css-loader",
+                {
+                    loader: "nativescript-css-loader",
+                    options: { minimize: false }
+                },
                 "nativescript-dev-webpack/platform-css-loader",
             ]),
         },
@@ -150,6 +171,15 @@ function getPlugins(platform, env) {
             "./bundle",
         ]),
 
+        // Generate report files for bundles content
+        new BundleAnalyzerPlugin({
+            analyzerMode: "static",
+            openAnalyzer: false,
+            generateStatsFile: true,
+            reportFilename: join(__dirname, "report", `report.html`),
+            statsFilename: join(__dirname, "report", `stats.json`),
+        }),
+
         // Angular AOT compiler
         new AotPlugin({
             tsConfigPath: "tsconfig.aot.json",
@@ -157,11 +187,15 @@ function getPlugins(platform, env) {
             typeChecking: false
         }),
 
-        // Resolve .ios.css and .android.css component stylesheets
-        new nsWebpack.StyleUrlResolvePlugin({platform}),
+        // Resolve .ios.css and .android.css component stylesheets, and .ios.html and .android component views
+        new nsWebpack.UrlResolvePlugin({
+            platform: platform,
+            resolveStylesUrls: true,
+            resolveTemplateUrl: true
+        }),
 
     ];
-    
+
     if (env.uglify) {
         plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
 
