@@ -6,7 +6,7 @@ export const routes = [
     ...homeRoutes,
     {
         path: "ninjas",
-        loadChildren: "./ninjas/ninjas.module#NinjasModule",
+        loadChildren: "~/ninjas/ninjas.module#NinjasModule",
     }
 ];
 

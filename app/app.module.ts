@@ -16,8 +16,5 @@ import { AppComponent } from "./app.component";
         NativeScriptRouterModule,
         routing,
     ],
-    providers: [
-        { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader }
-    ]
 })
 export class AppModule { }
